@@ -362,89 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiExperienceExperience extends Schema.CollectionType {
-  collectionName: 'experiences';
-  info: {
-    singularName: 'experience';
-    pluralName: 'experiences';
-    displayName: 'Experience';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    companyName: Attribute.String;
-    user_resume: Attribute.Relation<
-      'api::experience.experience',
-      'manyToOne',
-      'api::user-resume.user-resume'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::experience.experience',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::experience.experience',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUserResumeUserResume extends Schema.CollectionType {
-  collectionName: 'user_resumes';
-  info: {
-    singularName: 'user-resume';
-    pluralName: 'user-resumes';
-    displayName: 'User Resume';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    resumeId: Attribute.String;
-    userEmail: Attribute.Email;
-    userName: Attribute.String;
-    firstName: Attribute.String;
-    lastName: Attribute.String;
-    address: Attribute.Text;
-    phone: Attribute.String;
-    jobTitle: Attribute.String;
-    email: Attribute.String;
-    summery: Attribute.Text;
-    themeColor: Attribute.String;
-    experiences: Attribute.Relation<
-      'api::user-resume.user-resume',
-      'oneToMany',
-      'api::experience.experience'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::user-resume.user-resume',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::user-resume.user-resume',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -871,6 +788,166 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiEducationEducation extends Schema.CollectionType {
+  collectionName: 'educations';
+  info: {
+    singularName: 'education';
+    pluralName: 'educations';
+    displayName: 'Education';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    universityName: Attribute.String;
+    degree: Attribute.String;
+    major: Attribute.String;
+    startDate: Attribute.String;
+    endDate: Attribute.String;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::education.education',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::education.education',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExperienceExperience extends Schema.CollectionType {
+  collectionName: 'experiences';
+  info: {
+    singularName: 'experience';
+    pluralName: 'experiences';
+    displayName: 'Experience';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    companyName: Attribute.String;
+    city: Attribute.String;
+    state: Attribute.String;
+    startDate: Attribute.String;
+    endDate: Attribute.String;
+    workSummery: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSkillSkill extends Schema.CollectionType {
+  collectionName: 'skills';
+  info: {
+    singularName: 'skill';
+    pluralName: 'skills';
+    displayName: 'skill';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    rating: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::skill.skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserResumeUserResume extends Schema.CollectionType {
+  collectionName: 'user_resumes';
+  info: {
+    singularName: 'user-resume';
+    pluralName: 'user-resumes';
+    displayName: 'User Resume';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    resumeId: Attribute.String;
+    userEmail: Attribute.Email;
+    userName: Attribute.String;
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    address: Attribute.Text;
+    phone: Attribute.String;
+    jobTitle: Attribute.String;
+    email: Attribute.String;
+    summery: Attribute.Text;
+    themeColor: Attribute.String;
+    Experience: Attribute.Relation<
+      'api::user-resume.user-resume',
+      'oneToMany',
+      'api::experience.experience'
+    >;
+    education: Attribute.Relation<
+      'api::user-resume.user-resume',
+      'oneToMany',
+      'api::education.education'
+    >;
+    skills: Attribute.Relation<
+      'api::user-resume.user-resume',
+      'oneToMany',
+      'api::skill.skill'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-resume.user-resume',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-resume.user-resume',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -881,8 +958,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::experience.experience': ApiExperienceExperience;
-      'api::user-resume.user-resume': ApiUserResumeUserResume;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -891,6 +966,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::education.education': ApiEducationEducation;
+      'api::experience.experience': ApiExperienceExperience;
+      'api::skill.skill': ApiSkillSkill;
+      'api::user-resume.user-resume': ApiUserResumeUserResume;
     }
   }
 }

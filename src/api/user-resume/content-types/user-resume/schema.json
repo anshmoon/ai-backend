@@ -49,11 +49,20 @@
     "themeColor": {
       "type": "string"
     },
-    "experiences": {
+    "Experience": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::experience.experience",
-      "mappedBy": "user_resume"
+      "target": "api::experience.experience"
+    },
+    "education": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::education.education"
+    },
+    "skills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::skill.skill"
     }
   }
 }
